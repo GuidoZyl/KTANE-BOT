@@ -193,7 +193,47 @@ def simbolos():
     input("Presione enter para continuar")
     thread.join()
 
-funciones = [cables, boton, simbolos]
+def simon():
+    tiene_vocal =  input("El serial tiene vocal? (s/n): ")
+    cant_strikes = int(input("Ingrese la cantidad de strikes: "))
+    if tiene_vocal == "s":
+        while True:
+            colores = input("Ingrese el/los color(es): ")
+            colores = colores.split(" ")
+            for color in colores:
+                if cant_strikes == 0:
+                    if color == "rojo" or color == "ro" or color == "r":
+                        print("Azul")
+                    elif color == "azul" or color == "az":
+                        print("Rojo")
+                    elif color == "verde" or color == "ve" or color == "v":
+                        print("Amarillo")
+                    elif color == "amarillo" or color == "am":
+                        print("Verde")
+                elif cant_strikes == 1:
+                    if color == "rojo" or color == "ro" or color == "r":
+                        print("Amarillo")
+                    elif color == "azul" or color == "az":
+                        print("Verde")
+                    elif color == "verde" or color == "ve" or color == "v":
+                        print("Azul")
+                    elif color == "amarillo" or color == "am":
+                        print("Rojo")
+                else:
+                    if color == "rojo" or color == "ro" or color == "r":
+                        print("Verde")
+                    elif color == "azul" or color == "az":
+                        print("Rojo")
+                    elif color == "verde" or color == "ve" or color == "v":
+                        print("Amarillo")
+                    elif color == "amarillo" or color == "am":
+                        print("Azul")
+
+    elif tiene_vocal == "n":
+        
+
+
+funciones = [cables, boton, simbolos, simon]
 
 while True:
     modulo = int(input(txt_elegir_modulo))
