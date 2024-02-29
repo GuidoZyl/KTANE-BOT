@@ -271,15 +271,106 @@ def tablas_palabras():
 
 def numeros_orden():
     lista_numeros = []
-    for i in range(5):
-        num_pantalla = int(input("Ingrese el número en pantalla: "))
-        if num_pantalla in [1, 2]:
-            print("Pulse la segunda posición")
-            pos = 1
-            num = int(input("Ingrese el número: "))
+    # Etapa 1
+    num_pantalla = int(input("Ingrese el número en pantalla: "))
+    if num_pantalla in [1, 2]:
+        print("Pulse la segunda posición")
+        pos = 1
+        num = int(input("Ingrese el número: "))
+        lista_numeros.append((pos, num))
 
-        elif num_pantalla == 3:
-            print("Pulse la tercera posición")
+    elif num_pantalla == 3:
+        print("Pulse la tercera posición")
+        pos = 2
+        num = int(input("Ingrese el número: "))
+        lista_numeros.append((pos, num))
+    
+    elif num_pantalla == 4:
+        print("Pulse la cuarta posición")
+        pos = 3
+        num = int(input("Ingrese el número: "))
+        lista_numeros.append((pos, num))
+
+    # Etapa 2
+    num_pantalla = int(input("Ingrese el número en pantalla: "))
+    if num_pantalla == 1:
+        print("Pulse el número 4")
+        pos = int(input("Ingrese la posición: ")) - 1
+        num = 4
+        lista_numeros.append((pos, num))
+    
+    elif num_pantalla in [2, 4]:
+        print(f"Pulse la posición {lista_numeros[0][0]}")
+        pos = lista_numeros[0][0]
+        num = int(input("Ingrese el número: "))
+        lista_numeros.append((pos, num))
+
+    elif num_pantalla == 3:
+        print("Pulse la primera posición")
+        pos = 0
+        num = int(input("Ingrese el número: "))
+        lista_numeros.append((pos, num))
+    
+    # Etapa 3
+    num_pantalla = int(input("Ingrese el número en pantalla: "))
+    if num_pantalla == 1:
+        print(f"Pulse el número {lista_numeros[1][1]}")
+        pos = int(input("Ingrese la posición: ")) - 1
+        num = lista_numeros[1][1]
+        lista_numeros.append((pos, num))
+
+    elif num_pantalla == 2:
+        print(f"Pulse el número {lista_numeros[0][1]}")
+        pos = int(input("Ingrese la posición: ")) - 1
+        num = lista_numeros[0][1]
+        lista_numeros.append((pos, num))
+
+    elif num_pantalla == 3:
+        print("Pulse la tercera posición")
+        pos = 2
+        num = int(input("Ingrese el número: "))
+        lista_numeros.append((pos, num))
+
+    elif num_pantalla == 4:
+        print("Pulse el número 4")
+        pos = int(input("Ingrese la posición: ")) - 1
+        num = 4
+        lista_numeros.append((pos, num))
+
+    # Etapa 4
+    num_pantalla = int(input("Ingrese el número en pantalla: "))
+    if num_pantalla == 1:
+        print(f"Pulse la posición {lista_numeros[0][0]}")
+        pos = lista_numeros[0][0]
+        num = int(input("Ingrese el número: "))
+        lista_numeros.append((pos, num))
+
+    elif num_pantalla == 2:
+        print("Pulse la primera posición")
+        pos = 0
+        num = int(input("Ingrese el número: "))
+        lista_numeros.append((pos, num))
+
+    elif num_pantalla in [3, 4]:
+        print(f"Pulse la posición {lista_numeros[1][0]}")
+        pos = lista_numeros[1][0]
+        num = int(input("Ingrese el número: "))
+        lista_numeros.append((pos, num))
+
+    # Etapa 5
+    num_pantalla = int(input("Ingrese el número en pantalla: "))
+    if num_pantalla == 1:
+        print(f"Pulse el número {lista_numeros[0][1]}")
+
+    elif num_pantalla == 2:
+        print(f"Pulse el número {lista_numeros[1][1]}")
+
+    elif num_pantalla == 3:
+        print(f"Pulse el número {lista_numeros[3][1]}")
+
+    elif num_pantalla == 4:
+        print(f"Pulse el número {lista_numeros[2][1]}")
+    
 
 funciones = [cables, boton, simbolos, simon, tablas_palabras, numeros_orden]
 
