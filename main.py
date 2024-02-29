@@ -17,6 +17,22 @@ txt_elegir_modulo = """Ingrese el modulo de la bomba:
 11) Contraseña
 """
 
+def abrir_img(nombre_img):
+        img = Image.open(nombre_img)
+        window = tk.Tk()
+
+        # Convert the Image object to a PhotoImage object, which Tkinter can display
+        tk_img = ImageTk.PhotoImage(img)
+
+        # Add the image to a label in the window
+        label = tk.Label(window, image=tk_img)
+        label.pack()
+
+        window.attributes('-topmost', True)
+
+        # Start the Tkinter event loop (this will display the window)
+        window.mainloop()
+
 def cables():
     cant_cables = int(input("Ingrese la cantidad de cables: "))
     if cant_cables == 3:
@@ -144,23 +160,7 @@ def boton():
     barra()
 
 def simbolos():
-    def abrir_img():
-        img = Image.open("simbolos.png")
-        window = tk.Tk()
-
-        # Convert the Image object to a PhotoImage object, which Tkinter can display
-        tk_img = ImageTk.PhotoImage(img)
-
-        # Add the image to a label in the window
-        label = tk.Label(window, image=tk_img)
-        label.pack()
-
-        window.attributes('-topmost', True)
-
-        # Start the Tkinter event loop (this will display the window)
-        window.mainloop()
-
-    thread = threading.Thread(target=abrir_img)
+    thread = threading.Thread(target=abrir_img, args=("simbolos.png",))
     thread.start()
 
     ### HACER CLICKEABLES LAS IMAGENES ###
@@ -267,7 +267,39 @@ def simon():
                         print("Rojo")
 
 def tablas_palabras():
-    pass
+    def abrir_img1():
+        img1 = Image.open("tablas_palabras1.JPG")
+        window1 = tk.Tk()
+
+        # Convert the Image object to a PhotoImage object, which Tkinter can display
+        tk_img1 = ImageTk.PhotoImage(img1)
+
+        # Add the image to a label in the window
+        label1 = tk.Label(window1, image=tk_img1)
+        label1.pack()
+
+        window1.attributes('-topmost', True)        
+
+        # Segunda ventana
+        img2 = Image.open("tablas_palabras2.JPG")
+        window2 = tk.Toplevel(window1)
+
+        window2.geometry("860x680+1000+50")
+        # Convert the Image object to a PhotoImage object, which Tkinter can display
+        tk_img2 = ImageTk.PhotoImage(img2)
+
+        # Add the image to a label in the window
+        label2 = tk.Label(window2, image=tk_img2)
+        label2.pack()
+
+        window2.attributes('-topmost', True)
+        window1.mainloop()
+
+    thread = threading.Thread(target=abrir_img1)
+    thread.start()
+        
+    input("Presione enter para continuar")
+    thread.join()
 
 def numeros_orden():
     lista_numeros = []
@@ -371,12 +403,14 @@ def numeros_orden():
     elif num_pantalla == 4:
         print(f"Pulse el número {lista_numeros[2][1]}")
     
+def codigo_morse():
+    pass
 
-funciones = [cables, boton, simbolos, simon, tablas_palabras, numeros_orden]
+funciones = [cables, boton, simbolos, simon, tablas_palabras, numeros_orden, codigo_morse]
 
 while True:
     modulo = int(input(txt_elegir_modulo))
     
     funciones[modulo - 1]()
-    if modulo != 3:
+    if modulo in [3, 5]:
         input("Presione enter para continuar")
