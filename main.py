@@ -9,7 +9,7 @@ txt_elegir_modulo = """Ingrese el modulo de la bomba:
 3) Símbolos
 4) Simón dice
 5) Tablas palabras
-6) Numeros orden
+6) Números orden
 7) Código morse
 8) Cables complicados
 9) Cables RAN
@@ -198,7 +198,9 @@ def simon():
     cant_strikes = int(input("Ingrese la cantidad de strikes: "))
     if tiene_vocal == "s":
         while True:
-            colores = input("Ingrese el/los color(es): ")
+            colores = input("Ingrese el/los color(es) o 'c' para cancelar: ")
+            if colores == "c":
+                break
             colores = colores.split(" ")
             for color in colores:
                 if cant_strikes == 0:
@@ -230,10 +232,56 @@ def simon():
                         print("Azul")
 
     elif tiene_vocal == "n":
-        
+        while True:
+            colores = input("Ingrese el/los color(es) o 'c' para cancelar: ")
+            if colores == "c":
+                break
+            colores = colores.split(" ")
+            for color in colores:
+                if cant_strikes == 0:
+                    if color == "rojo" or color == "ro" or color == "r":
+                        print("Azul")
+                    elif color == "azul" or color == "az":
+                        print("Amarillo")
+                    elif color == "verde" or color == "ve" or color == "v":
+                        print("Verde")
+                    elif color == "amarillo" or color == "am":
+                        print("Rojo")
+                elif cant_strikes == 1:
+                    if color == "rojo" or color == "ro" or color == "r":
+                        print("Rojo")
+                    elif color == "azul" or color == "az":
+                        print("Azul")
+                    elif color == "verde" or color == "ve" or color == "v":
+                        print("Amarillo")
+                    elif color == "amarillo" or color == "am":
+                        print("Verde")
+                else:
+                    if color == "rojo" or color == "ro" or color == "r":
+                        print("Amarillo")
+                    elif color == "azul" or color == "az":
+                        print("Verde")
+                    elif color == "verde" or color == "ve" or color == "v":
+                        print("Azul")
+                    elif color == "amarillo" or color == "am":
+                        print("Rojo")
 
+def tablas_palabras():
+    pass
 
-funciones = [cables, boton, simbolos, simon]
+def numeros_orden():
+    lista_numeros = []
+    for i in range(5):
+        num_pantalla = int(input("Ingrese el número en pantalla: "))
+        if num_pantalla in [1, 2]:
+            print("Pulse la segunda posición")
+            pos = 1
+            num = int(input("Ingrese el número: "))
+
+        elif num_pantalla == 3:
+            print("Pulse la tercera posición")
+
+funciones = [cables, boton, simbolos, simon, tablas_palabras, numeros_orden]
 
 while True:
     modulo = int(input(txt_elegir_modulo))
